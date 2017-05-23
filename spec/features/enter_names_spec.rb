@@ -7,11 +7,13 @@
 #
 # end
 
-feature "Game setup" do
+feature "Enter names" do
   scenario "Create name users and display them" do
     visit('/')
-    fill_in('name', with: 'Trump')
+    fill_in('name1', with: 'Trump')
+    fill_in('name2', with: 'Putin')
     click_button('Submit')
     expect(page).to have_content('Trump')
+    expect(page).to have_content('Putin')
   end
 end
