@@ -10,8 +10,8 @@
 feature "Enter names" do
   scenario "Create name users and display them" do
     visit('/')
-    fill_in('name1', with: 'Trump')
-    fill_in('name2', with: 'Putin')
+    fill_in('player_1_name', with: 'Trump')
+    fill_in('player_2_name', with: 'Putin')
     click_button('Submit')
     expect(page).to have_content('Trump')
     expect(page).to have_content('Putin')
