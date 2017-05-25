@@ -17,6 +17,12 @@ describe Game do
     end
   end
 
+  describe 'current turn' do
+    it 'starts as player 1' do
+      expect(game.current_player).to eq player_1
+    end
+  end
+
   describe '#attack' do
     it 'damages the attacked player' do
       expect(player_2).to receive(:receive_damage)
@@ -24,5 +30,11 @@ describe Game do
     end
   end
 
+  describe '#switch_turns' do
+    it 'switches the turn' do
+      game.switch_turns
+      expect(game.current_player).to eq player_2
+    end
+  end
 
 end
