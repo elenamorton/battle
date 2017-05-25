@@ -17,13 +17,6 @@ describe Player do
     end
   end
 
-  describe '#attack' do
-    it 'damages the player' do
-      expect(putin).to receive(:receive_damage)
-      trump.attack(putin)
-    end
-  end
-
   describe '#receive_damage' do
     it 'reduces the player hit points' do
       expect { putin.receive_damage }.to change { putin.hit_points }.by(-Player::ATTACK_HIT_POINTS)
