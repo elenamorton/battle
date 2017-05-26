@@ -2,8 +2,10 @@ require './lib/game'
 
 describe Game do
   subject(:game) { described_class.new(player_1, player_2) }
-  let(:player_1) { double :player }
-  let(:player_2) { double :player }
+  subject(:finished_game) { described_class.new(dead_player, player_2) }
+  let(:player_1) { double :player1, hit_points: 60 }
+  let(:player_2) { double :player2, hit_points: 60 }
+  let(:dead_player) { double :player, hit_points: 0 }
 
   describe '#player_1' do
     it 'receives the first player' do
@@ -38,6 +40,22 @@ describe Game do
 
     it 'switch players turn' do
       expect(game.switch_turns).to eq [player_2, player_1]
+    end
+  end
+
+  describe '#loser' do
+    it ' returns the player on less than 0hp' do
+      expect(finished_game.loser).to eq dead_player
+    end
+  end
+
+  describe '#game_over' do
+    it 'returns false if no player has 0HP' do
+      expect(game.game_over?).to eq false
+    end
+
+    it 'returns true if a player has 0HP' do
+      expect(finished_game.game_over?).to eq true
     end
   end
 

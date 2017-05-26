@@ -5,6 +5,11 @@
   <br/>
   <%= @game.player_2.name %>: <%= @game.player_2.hit_points %> HP
   <br/><br/>
+
+  <% if @game.game_over?%>
+    <h1>You lose <%= @game.loser.name %> with <%= @game.loser.hit_points %> hit points!!!<br/></h1>
+  <% end %><br/>
+
   <%= @game.current_player.name %>'s turn
   <br/><br/>
   <form action="/attack">

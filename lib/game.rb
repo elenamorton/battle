@@ -24,12 +24,25 @@ class Game
     @current_player, @opposing_player = @opposing_player, @current_player
   end
 
+  def loser
+    losing_players.first
+  end
+
+  def game_over?
+    losing_players.any?
+  end
+
+
 private
 
   attr_reader :players, :opposing_player
 
   def opposing_of(the_player)
     @players.select { |player| player != the_player }.first
+  end
+
+  def losing_players
+    players.select { |player| player.hit_points <= 0 }
   end
 
 end
