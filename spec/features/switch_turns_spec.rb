@@ -8,6 +8,8 @@ feature 'Switch turns' do
     sign_in_and_play
     click_button('Attack')
     click_link('OK')
+    click_button('Attack')
+    click_link('OK')
     expect(page).not_to have_content "Putin's turn"
     expect(page).to have_content "Trump's turn"
   end

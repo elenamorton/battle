@@ -5,6 +5,7 @@ class Game
   def initialize(player_1, player_2)
     @players = [player_1, player_2]
     @current_player = player_1
+    @opposing_player = player_2
   end
 
   def player_1
@@ -15,17 +16,19 @@ class Game
     @players.last
   end
 
-  def attack(player)
+  def attack(player = @opposing_player)
     player.receive_damage
   end
 
   def switch_turns
-    @current_player = opposing_player(@current_player)
+    @current_player, @opposing_player = @opposing_player, @current_player
   end
 
 private
 
-  def opposing_player(the_player)
+  attr_reader :players, :opposing_player
+
+  def opposing_of(the_player)
     @players.select { |player| player != the_player }.first
   end
 
