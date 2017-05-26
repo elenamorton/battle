@@ -35,6 +35,10 @@ describe Game do
       game.switch_turns
       expect(game.current_player).to eq player_2
     end
+
+    it 'switch players turn' do
+      expect(game.switch_turns).to eq [player_2, player_1]
+    end
   end
 
 end
